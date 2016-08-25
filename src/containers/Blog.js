@@ -5,28 +5,28 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import App from './App'
-import BookList from './BookList'
-import {deleteBook} from '../actions'
+import BookList from '../components/BookList'
+import {deleteBook} from '../actions/actions'
 
 class Blog extends React.Component {
     render() {
-        const {bookList, dispatch} = this.props;
+        const {state, dispatch} = this.props;
         return (
-            <App>
+            <div id="blog">
                 <div>
-                    <BookList bookList={bookList} onDeleteBook={(bookid) => dispatch(deleteBook(bookid))} />
+                    <BookList state={state.bookList} onDeleteBook={(bookid) => dispatch(deleteBook(bookid))} />
                 </div>
                 <div>
                     <Link to="/add-book">Add Book</Link>
                 </div>
-            </App>
+            </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        bookList: state.book.bookList
+        state: {bookList: state.book.bookList}
     }
 };
 

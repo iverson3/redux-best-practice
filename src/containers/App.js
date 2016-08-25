@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import Header from './Header'
-import Footer from './Footer'
+import Footer from '../components/Footer'
 import Body from './Body'
 
 export default class App extends React.Component {

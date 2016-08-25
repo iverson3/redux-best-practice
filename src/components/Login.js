@@ -2,16 +2,24 @@
  * Created by stefan.wang on 8/24/2016.
  */
 import React from 'react'
-import App from './App'
+import { connect } from 'react-redux'
 
-export default class Login extends React.Component {
+class Login extends React.Component {
     render() {
+        let {state} = this.props;
         return (
-            <App>
-                <div>
-                    <h2>这是Login页面的main部分</h2>
-                </div>
-            </App>
+            <div>
+                <h2>这是Login页面的main部分</h2>
+                <p>{state.isLogin}</p>
+            </div>
         );
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        state: {isLogin: ownProps.params.isLogin}
+    };
+};
+
+export default connect(mapStateToProps)(Login);

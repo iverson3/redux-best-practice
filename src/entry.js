@@ -5,30 +5,37 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
 import { Provider } from 'react-redux'
-import { Router, Route, hashHistory } from 'react-router'
-import Index from './components/Index'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import {syncHistoryWithStore} from 'react-router-redux'
+import App from './containers/App'
+import Index from './containers/Index'
 import Login from './components/Login'
-import Blog from './components/Blog'
-import AddBook from './components/AddBook'
+import Blog from './containers/Blog'
+import AddBook from './containers/AddBook'
+import AppleBusket from './containers/AppleBusket'
 import NotFoundView from './components/public/NotFoundView'
-import reducers from './reducers'
+import reducers from './reducers/reducers'
 import callTraceMiddleware from './middlewares/callTraceMiddleware'
 
 
 // 使用中间件
-let middleWares = [thunkMiddleware, callTraceMiddleware];
+let middleWares = [thunkMiddleware, createLogger(), callTraceMiddleware];
 const finalCreateStore = applyMiddleware(...middleWares)(createStore);
 let store = finalCreateStore(reducers);
 
+const history = syncHistoryWithStore(browserHistory, store);
+
 render((
     <Provider store={store}>
-        <Router history={hashHistory}>
+        <Router history={history}>
             <Route path='/' component={App}>
-                <Route path="/" component={Index} />
-                <Route path="/login" component={Login} />
-                <Route path="/blog" component={Blog} />
-                <Route path="/add-book" component={AddBook} />
+                <IndexRoute component={Index} />
+                <Route path="login/isLogin/:isLogin" component={Login} />
+                <Route path="blog" component={Blog} />
+                <Route path="apple" component={AppleBusket} />
+                <Route path="add-book" component={AddBook} />
             </Route>
             <Route path='*' component={NotFoundView}/>
         </Router>

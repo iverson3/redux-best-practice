@@ -2,14 +2,15 @@
  * Created by stefan.wang on 8/24/2016.
  */
 import React from 'react'
+import Book from './Book'
 
 
 export default class BookList extends React.Component {
     render() {
-        let books = this.props.bookList.map(function (res, index) {
+        let {state} = this.props;
+        let books = state.map(function (book, index) {
             return (
-                <li key={index} no={res.id}><span>{res.name}</span> <span onClick={this.props.onDeleteBook.bind(this, res.id)}>[<a
-                    href="javascript:;">delete</a>]</span></li>
+                <li key={index}><Book state={book} onDeleteBook={(bookid) => {this.props.onDeleteBook(bookid)}} /></li>
             );
         }.bind(this));
         return (
