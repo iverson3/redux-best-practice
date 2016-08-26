@@ -17,10 +17,11 @@ import AppleBusket from './containers/AppleBusket'
 import NotFoundView from './components/public/NotFoundView'
 import reducers from './reducers/reducers'
 import callTraceMiddleware from './middlewares/callTraceMiddleware'
+import asyncHandleMiddleware from './middlewares/asyncHandleMiddleware'
 
 
 // 使用中间件
-let middleWares = [thunkMiddleware, createLogger(), callTraceMiddleware];
+let middleWares = [thunkMiddleware, createLogger(), callTraceMiddleware, asyncHandleMiddleware];
 const finalCreateStore = applyMiddleware(...middleWares)(createStore);
 let store = finalCreateStore(reducers);
 

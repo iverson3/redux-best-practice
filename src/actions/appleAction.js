@@ -3,7 +3,7 @@
  */
 import ajax from '../services/ajax'
 import $ from 'jquery'
-import {apple_prefix} from '../../config'
+import {apple_prefix} from '../common/config'
 
 // 业界标准的action格式
 // return {
@@ -23,24 +23,14 @@ let appleActions = {
     // 注意这里需要 () => ... , 不然 pickAppleAction 不是一个actionCreator, 而是一个thunk
     pickApple: () => (dispatch, getState) => {
 
-        //如果正在摘苹果，则结束这个thunk, 不执行摘苹果
+        // 如果正在摘苹果，则结束这个thunk, 不执行摘苹果
         if(getState().isPicking)
             return;
 
-        //通知开始摘苹果
+        // 通知开始摘苹果
         dispatch(appleActions.beginPickApple());
 
-        //发送摘苹果请求
-        // ajax({
-        //     url: '/appleBasket/pickApple',
-        //     method: 'GET'
-        // }).done(data => {
-        //     dispatch(appleActions.donePickApple(data.weight))
-        // })
-        // .fail(error => {
-        //     dispatch(appleActions.failPickApple(error));
-        // }
-
+        // 发送摘苹果请求
         // $.ajax({
         //     type: 'get',
         //     url : '/appleBasket/pickApple',

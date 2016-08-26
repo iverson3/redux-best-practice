@@ -2,7 +2,7 @@
  * Created by iFan on 16/8/25.
  */
 import { fromJS } from 'immutable'
-import {apple_prefix} from '../../config'
+import {apple_prefix} from '../common/config'
 
 const defaultState = {
     isPicking: false,

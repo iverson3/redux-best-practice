@@ -20,9 +20,13 @@ export default class BookList extends React.Component {
         }.bind(this));
         return (
             <div>
-                <ul>
-                    {books}
-                </ul>
+                <h3>Book List</h3>
+                <hr/>
+                <div>
+                    <ul>
+                        {books}
+                    </ul>
+                </div>
             </div>
         );
     }

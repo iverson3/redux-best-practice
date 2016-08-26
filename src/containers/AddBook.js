@@ -4,14 +4,14 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import {addBook} from '../actions/actions'
+import bookActions from '../actions/bookAction'
 
 class AddBook extends React.Component {
 
     AddBookHandle() {
         const { state, dispatch } = this.props;
-        let book = {id: state.maxid + 1, name: this.refs.name.value, author: this.refs.author.value};
-        dispatch(addBook(book));
+        let book = {id: state.maxid, name: this.refs.name.value, author: this.refs.author.value};
+        dispatch(bookActions.addBook(book));
     }
 
     render() {

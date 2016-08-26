@@ -16,7 +16,7 @@ export default class AppleItem extends React.Component {
             <div className="appleItem">
                 <div className="apple"><img src={require('../../public/images/apple.jpg')} alt=""/></div>
                 <div className="info">
-                    <div className="name">红苹果 - {state.id}号</div>
+                    <div className="name">红苹果 - {state.id + 1}号</div>
                     <div className="weight">{state.weight}克</div>
                 </div>
                 <div className="btn-div">

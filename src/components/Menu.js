@@ -12,7 +12,6 @@ export default class Menu extends React.Component {
 
     render() {
         let {state} = this.props;
-        console.log(state)
         var menus = state.menuList.map(function (res, index) {
             return (
                 <li className="menu-item" key={index}><p className={(state.now === res.id)? "menu-item-p-now" : "menu-item-p"} onClick={this.props.menuClick.bind(this, res.id)}>
