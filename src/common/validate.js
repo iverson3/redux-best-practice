@@ -20,7 +20,7 @@ let validateHandler = [];
 validateHandler[validateType.username] = function (...value) {
     var str = value[0].trim();
     if(str.length != 0){
-        reg = /^[a-zA-Z0-9_]+$/;
+        let reg = /^[a-zA-Z0-9_]+$/;
         if(!reg.test(str)){
             return false;
         }

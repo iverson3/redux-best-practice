@@ -14,6 +14,7 @@ import Login from './components/Login'
 import Blog from './containers/Blog'
 import AddBook from './containers/AddBook'
 import AppleBusket from './containers/AppleBusket'
+import BookDetail from './components/BookDetail'
 import NotFoundView from './components/public/NotFoundView'
 import reducers from './reducers/reducers'
 import callTraceMiddleware from './middlewares/callTraceMiddleware'
@@ -34,6 +35,7 @@ render((
                 <Route path="blog" component={Blog} />
                 <Route path="apple" component={AppleBusket} />
                 <Route path="add-book" component={AddBook} />
+                <Route path="book/:bookid" component={BookDetail} />
             </Route>
             <Route path='*' component={NotFoundView}/>
         </Router>

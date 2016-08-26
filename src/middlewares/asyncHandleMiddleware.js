@@ -7,6 +7,9 @@
 
 export default function asyncHandleMiddleware({dispatch, getState}) {
     return next => action => {
+        // 根据情况，可在这dispatch指定的action
+        // dispatch(action());
+
         switch (action.type) {
             case "MENU_CUT":
                 console.log('MENU_CUT');
