@@ -7,8 +7,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { Provider } from 'react-redux'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import {syncHistoryWithStore} from 'react-router-redux'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import App from './containers/App'
 import Index from './containers/Index'
 import Login from './components/Login'
@@ -25,11 +24,9 @@ let middleWares = [thunkMiddleware, createLogger(), callTraceMiddleware];
 const finalCreateStore = applyMiddleware(...middleWares)(createStore);
 let store = finalCreateStore(reducers);
 
-const history = syncHistoryWithStore(browserHistory, store);
-
 render((
     <Provider store={store}>
-        <Router history={history}>
+        <Router history={hashHistory}>
             <Route path='/' component={App}>
                 <IndexRoute component={Index} />
                 <Route path="login/isLogin/:isLogin" component={Login} />

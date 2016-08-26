@@ -8,7 +8,7 @@ export default class Body extends React.Component {
     render() {
         return (
             <div id="body">
-                <Banner />
+                {/*<Banner />*/}
                 <div id="body-main">
                     {this.props.children}
                 </div>

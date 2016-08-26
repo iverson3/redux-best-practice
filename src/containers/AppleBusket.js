@@ -11,30 +11,8 @@ import appleActions from '../actions/appleAction'
 class AppleBusket extends React.Component {
 
     render() {
-
+        // 这里不再取dispatch 而是 actions
         let { state, actions } = this.props;
-
-        // 这部分从对应的 appleBasketReducer.js 中拷贝
-        let mockState = {
-            isPicking : false,
-            newAppleId: 3,
-            apples: [
-                {
-                    id: 1,
-                    weight: 235,
-                    isEaten: true
-                },
-                {
-                    id: 2,
-                    weight: 256,
-                    isEaten: false
-                }
-            ]
-        };
-
-        // 是否开启模拟数据的开关，注释这行代码关闭模拟数据
-        state = mockState;
-
 
         let stats = {
             appleNow: {
@@ -52,7 +30,6 @@ class AppleBusket extends React.Component {
             stats[selector].quantity ++;
             stats[selector].weight += apple.weight;
         });
-
 
         return (
             <div className="appleBusket">
@@ -87,6 +64,8 @@ class AppleBusket extends React.Component {
     }
 }
 
+// 对actionCreator做dispatch级别的封装，这个过程我们可以使用 redux 提供的 bindActionCreators 函数自动完成。
+// 然后就可以直接调用action，而不需要使用dispatch方法去调用actionCreator
 function buildActionDispatcher(dispatch) {
     return {
         actions: bindActionCreators(appleActions, dispatch)

@@ -6,6 +6,11 @@ import Book from './Book'
 
 
 export default class BookList extends React.Component {
+
+    shouldComponentUpdate(nextProps) {
+        return nextProps.state != this.props.state;
+    }
+
     render() {
         let {state} = this.props;
         let books = state.map(function (book, index) {
