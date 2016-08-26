@@ -24,7 +24,8 @@
     "react-router-redux": "^4.0.1",
     "redux-logger": "^1.0.9",
     "jquery": "^2.1.4",
-    "immutable": "^3.6.4"
+    "immutable": "^3.6.4",
+    "history": "^1.13.1"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",

@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
-import {menuCut} from '../actions/actions'
+import menuActions from '../actions/menuAction'
 import Menu from '../components/Menu'
 
 
@@ -16,7 +16,7 @@ class Header extends React.Component {
         const { dispatch, state } = this.props;
         return (
             <div id="header">
-                <Menu state={state.menuList} menuClick={(menuid) => dispatch(menuCut(menuid))} menu_now_id={state.now}/>
+                <Menu state={state} menuClick={(menuid) => dispatch(menuActions.menuCut(menuid))}/>
             </div>
         );
     }
