@@ -11,6 +11,11 @@ let bookActions = {
     deleteBook: (id) => ({
         type: "DELETE_BOOK",
         bookid: id
+    }),
+
+    fetchBook: (id) => ({
+        type: "FETCH_BOOK",
+        bookid: id
     })
 };
 

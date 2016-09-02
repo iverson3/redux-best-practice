@@ -4,7 +4,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import App from './App'
 import BookList from '../components/BookList'
 import bookActions from '../actions/bookAction'
 
@@ -14,7 +13,11 @@ class Blog extends React.Component {
         return (
             <div id="blog">
                 <div>
-                    <BookList state={state.bookList} onDeleteBook={(bookid) => dispatch(bookActions.deleteBook(bookid))} />
+                    <BookList
+                        state={state.bookList}
+                        onDeleteBook={(bookid) => dispatch(bookActions.deleteBook(bookid))}
+                        onFetchBook={(bookid) => dispatch(bookActions.fetchBook(bookid))}
+                    />
                 </div>
                 <div>
                     <Link to="/add-book">Add Book</Link>

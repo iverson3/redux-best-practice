@@ -1,7 +1,13 @@
 /**
  * Created by iFan on 16/8/25.
  */
-const bookInitState = {bookList: [], bookType: '', maxId: 1};
+
+const bookInitState = {
+    bookList: [],
+    bookType: '',
+    maxId: 1,
+    currBook: {}
+};
 function bookReducer(state = bookInitState, action) {
     switch (action.type) {
         case 'ADD_BOOK':
@@ -14,6 +20,15 @@ function bookReducer(state = bookInitState, action) {
                 }
             });
             return Object.assign({}, state, {bookList: books});
+        case 'FETCH_BOOK':
+            let currBook = {};
+            for (let i = 0; i < state.bookList.length; i++) {
+                if (state.bookList[i].id === action.bookid) {
+                    currBook = state.bookList[i];
+                    break;
+                }
+            }
+            return Object.assign({}, state, {currBook: currBook});
         default:
             return state;
     }

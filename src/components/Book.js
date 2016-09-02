@@ -8,11 +8,17 @@ export default class Book extends React.Component {
         return nextProps.state != this.props.state;
     }
 
+    onClick() {
+        let {state} = this.props;
+        this.props.onFetchBook(state.id);
+        window.location.hash = '/book/' + state.id;
+    }
+
     render() {
         let {state} = this.props;
         return (
             <p>
-                <span onClick={() => {window.location.hash = '/book/' + state.id;}}>{state.name}</span> <span onClick={this.props.onDeleteBook.bind(this, state.id)}>[<a
+                <span onClick={this.onClick.bind(this)}>{state.name}</span> <span onClick={this.props.onDeleteBook.bind(this, state.id)}>[<a
                 href="javascript:;">delete</a>]</span>
             </p>
         );
