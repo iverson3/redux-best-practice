@@ -15,10 +15,13 @@ import Blog from './containers/Blog'
 import AddBook from './containers/AddBook'
 import AppleBusket from './containers/AppleBusket'
 import BookDetail from './components/BookDetail'
+import SignIn from './components/SignIn'
+import SignOut from './components/SignOut'
 import NotFoundView from './components/public/NotFoundView'
 import reducers from './reducers/reducers'
 import callTraceMiddleware from './middlewares/callTraceMiddleware'
 import asyncHandleMiddleware from './middlewares/asyncHandleMiddleware'
+import isLogin from './common/common'
 
 
 // 使用中间件
@@ -26,18 +29,42 @@ let middleWares = [thunkMiddleware, createLogger(), callTraceMiddleware, asyncHa
 const finalCreateStore = applyMiddleware(...middleWares)(createStore);
 let store = finalCreateStore(reducers);
 
+
+// 路由的钩子函数：用来做一些前置处理和后置处理
+function errorEnter() {
+    console.log('errorEnter')
+}
+
+function errorLeave() {
+    console.log('errorLeave')
+}
+
+// 权限检查
+function checkAuth(nextState, replace) {
+    if (isLogin() === 'true') {
+        return true;
+    } else {
+        // 第一个参数： 登录成功之后需要继续访问的页面
+        replace({ nextPathname: nextState.location.pathname }, '/signin');
+        return false;
+    }
+}
+
 render((
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path='/' component={App}>
-                <IndexRoute component={Index} />
-                <Route path="login/isLogin/:isLogin" component={Login} />
-                <Route path="blog" component={Blog} />
-                <Route path="apple" component={AppleBusket} />
-                <Route path="add-book" component={AddBook} />
-                <Route path="book/:bookid" component={BookDetail} />
+                <IndexRoute component={SignIn} onEnter={errorEnter} onLeave={errorLeave} />
+                <Route path="index" component={Index} />
+                <Route path="signin" component={SignIn} />
+                <Route path="signout" component={SignOut} />
+                <Route path="login/isLogin/:isLogin" component={Login} onEnter={checkAuth} />
+                <Route path="blog" component={Blog} onEnter={checkAuth} />
+                <Route path="apple" component={AppleBusket} onEnter={checkAuth} />
+                <Route path="add-book" component={AddBook} onEnter={checkAuth} />
+                <Route path="book/:bookid" component={BookDetail} onEnter={checkAuth} />
             </Route>
-            <Route path='*' component={NotFoundView}/>
+            <Route path='*' component={NotFoundView} />
         </Router>
     </Provider>),
     document.getElementById('App')

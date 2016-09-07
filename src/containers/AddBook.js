@@ -24,7 +24,6 @@ class AddBook extends React.Component {
             dispatch(bookActions.addBook(book));
             // window.location.hash = "/blog";
             this.props.history.pushState(null, '/blog');
-
             // this.props.history.replaceState(null, 'blog');
             // this.props.history.goBack();
         } else {

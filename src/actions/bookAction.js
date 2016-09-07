@@ -16,6 +16,11 @@ let bookActions = {
     fetchBook: (id) => ({
         type: "FETCH_BOOK",
         bookid: id
+    }),
+
+    pageChange: (pageInfo = {currPage: 1}) => ({
+        type: "PAGE_CHANGE",
+        pageInfo: pageInfo
     })
 };
 
