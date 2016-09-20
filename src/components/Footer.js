@@ -8,6 +8,7 @@ export default class Footer extends React.Component {
         return (
             <div id="footer">
                 <h4>这是底部</h4>
+                <div className="kuma-loading-l"></div>
             </div>
         );
     }

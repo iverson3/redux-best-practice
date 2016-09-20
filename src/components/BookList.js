@@ -16,8 +16,8 @@ export default class BookList extends React.Component {
         let books = state.map(function (book, index) {
             return (
                 <li key={index}><Book state={book}
-                                      onDeleteBook={(bookid) => {this.props.onDeleteBook(bookid)}}
-                                      onFetchBook={(bookid) => {this.props.onFetchBook(bookid)}}
+                                      onDeleteBook={(bookid) => {state.onDeleteBook(bookid)}}
+                                      onFetchBook={(bookid) => {state.onFetchBook(bookid)}}
                 /></li>
             );
         }.bind(this));

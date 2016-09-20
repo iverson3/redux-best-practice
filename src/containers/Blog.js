@@ -7,6 +7,7 @@ import { Link } from 'react-router'
 import BookList from '../components/BookList'
 import bookActions from '../actions/bookAction'
 import PagingBarExample from '../components/PagingBarExample'
+import FormDemo from '../components/FormDemo'
 
 class Blog extends React.Component {
     render() {
@@ -45,6 +46,10 @@ class Blog extends React.Component {
                 <div><PagingBarExample items={items} actions={actions} /></div>
                 <div>
                     <Link to="/add-book">Add Book</Link>
+                </div>
+
+                <div>
+                    <FormDemo />
                 </div>
             </div>
         );
