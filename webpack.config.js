@@ -16,6 +16,11 @@ module.exports = {
                 test: /\.jsx?$/,
                 loader: 'babel',
                 exclude: /node_modules/,
+                // exclude: function(path) {
+                //     // 路径中含有 node_modules 的就不去解析
+                //     var isNpmModule = !!path.match('node_modules/');
+                //     return isNpmModule;
+                // },
                 query: {
                     presets: ['es2015', 'react', "stage-2"]
                 }

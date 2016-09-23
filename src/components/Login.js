@@ -16,9 +16,21 @@ class Login extends React.Component {
     }
     handleChange(fileList) {
         console.log(fileList)
+
+        let tmp_fileList = [
+            {
+                response: {
+                    url: 'http://www.messefrankfurt-vsc-test.com/test-for-stefan/img/0bd806d12f2eb938ffc2c0cdd7628535e5dd6f25.jpg',
+                    name: 'test1',
+                    canRemove: true
+                }
+            }
+        ];
+
         this.setState({
-            fileList: fileList
+            fileList: tmp_fileList
         });
+        console.log(this.state.fileList)
     }
 
     shouldComponentUpdate(nextProps) {
@@ -48,7 +60,7 @@ class Login extends React.Component {
                 <h2>{state.message}</h2>
 
 
-                <div id="fileupload">
+                <div id="fileupload22">
                     <Button type="primary" size="small">default primary</Button>
                     <Button type="secondary" size="medium">secondary</Button>
                     <Button type="outline" size="large" onClick={this.click2}>outline</Button>
@@ -56,14 +68,13 @@ class Login extends React.Component {
 
                 <div>
                     <Uploader autoPending={false}
-                              ref="uploader"
                               multiple={false}
                               isOnlyImg={true}
                               tips={tips}
                               fileList={this.state.fileList}
                               onChange={this.handleChange.bind(this)}
                               name='file'
-                              url='http://localhost/stefan/test/server-for-redux'
+                              url='http://www.messefrankfurt-vsc-test.com/test-for-stefan/'
                               locale="en" />
                 </div>
             </div>
