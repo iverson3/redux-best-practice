@@ -18,6 +18,21 @@ let userActions = {
     fetchUserError: (error) => ({
         type: 'FETCH_USER_ERROR',
         error: error
+    }),
+
+    deleteUser: (userid) => ({
+        type: 'DELETE_USER',
+        userid: userid
+    }),
+    
+    addUser: (user) => ({
+        type: 'ADD_USER',
+        user: user
+    }),
+
+    getUserList: (condition) => ({
+        type: 'GET_USER_LIST',
+        condition: condition
     })
 };
 

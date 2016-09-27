@@ -4,11 +4,9 @@
 
 const initState = {
     userList: [
-        {id: 1, name: "stefan", age: 23},
-        {id: 2, name: "tom", age: 24},
-        {id: 3, name: "jim", age: 21}
+        // {id: 1, name: "stefan", age: 23, img: "", date: 0, sex: 1},
     ],
-    count: 3,
+    count: 0,
     error: {
         isError: false,
         message: ""
@@ -43,6 +41,20 @@ function userReducer(state = initState, action) {
                     message: action.error.message
                 }
             });
+
+        case "ADD_USER": {
+            return Object.assign({}, state, {
+                userList: [
+                    ...state.userList,
+                    action.user
+                ],
+                count: state.count + 1
+            });
+        }
+        
+        case "GET_USER_LIST": {
+            return state;
+        }
 
         default:
             return state;

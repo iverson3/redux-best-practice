@@ -7,7 +7,7 @@
     width: 100%;
     height: auto;
     min-height: 300px;
-    background-color: #0b97c4;
+    background-color: white;
     overflow: hidden;
 
 }
@@ -65,4 +65,9 @@
 }
 .btn-div{
     float: left;
+}
+
+
+.user-img{
+    max-height: 100px;
 }

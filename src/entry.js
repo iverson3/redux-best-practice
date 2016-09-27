@@ -18,6 +18,8 @@ import BookDetail from './components/BookDetail'
 import SignIn from './components/SignIn'
 import SignOut from './components/SignOut'
 import NotFoundView from './components/public/NotFoundView'
+import UploadList from './containers/UploadList'
+import UploadForm from './containers/UploadForm'
 import reducers from './reducers/reducers'
 import callTraceMiddleware from './middlewares/callTraceMiddleware'
 import asyncHandleMiddleware from './middlewares/asyncHandleMiddleware'
@@ -63,6 +65,8 @@ render((
                 <Route path="apple" component={AppleBusket} onEnter={checkAuth} />
                 <Route path="add-book" component={AddBook} onEnter={checkAuth} />
                 <Route path="book/:bookid" component={BookDetail} onEnter={checkAuth} />
+                <Route path="uploadlist" component={UploadList} />
+                <Route path="uploadform" component={UploadForm} />
             </Route>
             <Route path='*' component={NotFoundView} />
         </Router>

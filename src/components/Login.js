@@ -15,8 +15,6 @@ class Login extends React.Component {
         this.state = {fileList: []};
     }
     handleChange(fileList) {
-        console.log(fileList)
-
         let tmp_fileList = [
             {
                 response: {
@@ -28,9 +26,9 @@ class Login extends React.Component {
         ];
 
         this.setState({
-            fileList: tmp_fileList
+            fileList: fileList
         });
-        console.log(this.state.fileList)
+        // console.log(this.state.fileList)
     }
 
     shouldComponentUpdate(nextProps) {
